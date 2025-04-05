@@ -16,11 +16,10 @@ public class Livro implements Comparable<Livro>{
         this.quantidade = quantidade;
     }
 
-    public void verEstoque(){
-        System.out.println("Estoque disponível");
-        System.out.println();
-
+    public void verEstoque() {
+        System.out.println("Livro: " + nome + " | Quantidade disponível: " + quantidade);
     }
+    
 
     public String getNome() {
         return nome;
@@ -56,10 +55,9 @@ public class Livro implements Comparable<Livro>{
 
     @Override
     public String toString() {
-        return "Livro [nome=" + nome + ", autor=" + autor + ", genero=" + genero + ", quantidade=" + quantidade + "]";
-
+        return "- \"" + nome + "\" por " + autor + " | Gênero: " + genero + " | Quantidade: " + quantidade;
     }
-
+    
     @Override
     public int compareTo(Livro l) {
         return nome.compareTo(l.getNome());

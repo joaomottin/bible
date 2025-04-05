@@ -4,8 +4,16 @@ nome, Lista de Livros emprestados e os seguintes métodos.
 • Getters e Setters;
 • toString */
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
-    private String nome, listaLivrosEmprestados;
+    private String nome;
+    private List<Livro> livrosEmprestados;
+
+    public Cliente() {
+        livrosEmprestados = new ArrayList<>();
+    }
 
     public String getNome() {
         return nome;
@@ -15,16 +23,28 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getListaLivrosEmprestados() {
-        return listaLivrosEmprestados;
+    public List<Livro> getLivrosEmprestados() {
+        return livrosEmprestados;
     }
 
-    public void setListaLivrosEmprestados(String listaLivrosEmprestados) {
-        this.listaLivrosEmprestados = listaLivrosEmprestados;
+    public void setLivrosEmprestados(List<Livro> livrosEmprestados) {
+        this.livrosEmprestados = livrosEmprestados;
     }
 
+    // arrumadinha no tostring pra ficar + facil de visualizar
     @Override
     public String toString() {
-        return "Cliente [nome=" + nome + ", listaLivrosEmprestados=" + listaLivrosEmprestados + "]";
+        String resultado = "Cliente: " + nome + "\nLivros emprestados:\n";
+
+        if (livrosEmprestados.isEmpty()) {
+            resultado += "Nenhum livro emprestado.";
+        } else {
+            for (Livro livro : livrosEmprestados) {
+                resultado += livro + "\n";
+            }
+        }
+
+        return resultado;
     }
 }
+

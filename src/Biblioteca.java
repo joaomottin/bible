@@ -30,14 +30,31 @@ public class Biblioteca {
         livros.add(livro);
     }
 
-    public void emprestarLivros(){
-        
+    public List<Livro> emprestarLivros(List<Livro> listaDesejada) {
+        List<Livro> emprestados = new ArrayList<>();
+        for (Livro desejado : listaDesejada) {
+            for (Livro livro : livros) {
+                if (livro.getNome().equals(desejado.getNome()) && livro.getQuantidade() > 0) {
+                    livro.setQuantidade(livro.getQuantidade() - 1);
+                    emprestados.add(new Livro(livro.getNome(), livro.getAutor(), livro.getGenero(), 1));
+                    break;
+                }
+            }
+        }
+        return emprestados;
     }
-
-    public void devolverLivros(){
-
-
+    
+    public void devolverLivros(List<Livro> livrosDevolvidos) {
+        for (Livro devolvido : livrosDevolvidos) {
+            for (Livro livro : livros) {
+                if (livro.getNome().equals(devolvido.getNome())) {
+                    livro.setQuantidade(livro.getQuantidade() + 1);
+                    break;
+                }
+            }
+        }
     }
+    
 
     public String getNome() {
         return nome;
